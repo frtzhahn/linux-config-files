@@ -1,28 +1,22 @@
-### ubuntu
-<!-- --- -->
-<!-- just putting them in here incase i lost them   -->
-<br><br>
-
-
-
 <div align="center">
+
+### ubuntu
+
+<br><br>
 
 `screenshots`
 
-<!-- <img src="gallery/blue-themed.png"/> -->
-<!-- <img src="gallery/black-white-themed.png"/> -->
-<!-- <img src="gallery/skidmax.png"/> -->
-<!-- <img src="gallery/white-setup.png"/> -->
-<!-- <img src="gallery/setup.png"/> -->
-<!-- <img src="gallery/us.png"/> -->
 <img src="gallery/1.png"/>
 <img src="gallery/2.png"/>
 <br>
+
 ---
+
 ### cachyOS
+
+<br><br>
 <img src="gallery/3.png"/>
 <img src="gallery/4.png"/>
-
 
 
 </div>

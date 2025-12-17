@@ -1,9 +1,7 @@
-### ubuntu
+### ricing cachyOS
 <!-- --- -->
 <!-- just putting them in here incase i lost them   -->
 <br><br>
-
-
 
 <div align="center">
 
@@ -15,16 +13,12 @@
 <!-- <img src="gallery/white-setup.png"/> -->
 <!-- <img src="gallery/setup.png"/> -->
 <!-- <img src="gallery/us.png"/> -->
-<img src="gallery/1.png"/>
-<img src="gallery/2.png"/>
-<br>
----
-### cachyOS
-<img src="gallery/3.png"/>
-<img src="gallery/4.png"/>
-
-
+<img src="gallery/20251206_03h49m45s_grim.png"/>
+<img src="gallery/20251217_21h02m56s_grim.png"/>
+<img src="gallery/2025.png"/>
+<img src="gallery/old_nvim.png"/>
 
 </div>
+
 
 

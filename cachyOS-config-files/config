@@ -71,13 +71,14 @@ set $menu wmenu-run
      #bindsym $mod+F12 exec yakuake
 
     #alternative terminal
-     bindsym $mod+Return exec konsole
+     bindsym $mod+Return exec alacritty
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+d exec wofi --show drun
+		# bindsym $mod+d exec wofi --show drun --allow-images
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -245,16 +246,27 @@ bar {
     font pango:JetBrainsMono Nerd Font 9
 
     status_command bumblebee-status \
-        -m cpu memory load battery datetime pasink pasource pipewire \
-        -p time.format="%Y-%m-%d %H:%M:%S" \
-        -t solarized
+        -m cpu memory load battery time pasink pasource \
+				-p time.format="%H:%M:%S" \
+        -t night-powerline
+
 
     colors {
-        statusline #ffffff 
-        background #323232
+        statusline #32323200  
+        background #32323200
+        separator           #32323200
+        active_workspace    #32323200 #32323200 #32323200
+        focused_workspace   #32323200 #323232FF #000000
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+
+
+# bar {
+#     swaybar_command waybar
+# }
+
 
 
 #new keybinds
@@ -268,11 +280,16 @@ gaps outer 20
 
 
 #keybinds for livewallpaer/wallpaper/screenlock
-bindsym $mod+Shift+o output * bg /home/mocha/Pictures/saved-pictures/blackhole.jpg fill
-bindsym $mod+Shift+i output * bg /home/mocha/Pictures/saved-pictures/anti-spiral.jpg fill
-bindsym $mod+Shift+u output * bg /home/mocha/Pictures/saved-pictures/black.png fill
-bindsym $mod+Shift+y output * bg /home/mocha/Pictures/saved-pictures/blue.jpg fill
-
+bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/anti-spiral.jpg fill
+bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/blackhole.jpg fill
+bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/blue.jpg fill
+bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/black.png fill
+bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/1.jpg fill
+bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/2.jpg fill
+bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/3.jpg fill 
+bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
+bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/5.jpg fill 
 
 # Sticky window
 bindsym $mod+Shift+s sticky toggle
@@ -290,9 +307,10 @@ default_floating_border pixel 0
 #for systemctl
 bindsym $mod+ctrl+Shift+1 exec systemctl suspend
 bindsym $mod+ctrl+Shift+2 exec systemctl reboot
+bindsym $mod+ctrl+Shift+3 exec systemctl sleep
 
-
-bindsym Mod4+Shift+ctrl+y exec sh -c "feh --bg-fill /home/mocha/Pictures/saved-pictures/blue.jpg & kitty -e cava & kitty -e htop & kitty -e cmatrix & kitty -e tty-clock -c -D"
+#skid keybind ahh
+bindsym Mod4+Shift+ctrl+y exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e cava & kitty -e htop & kitty -e cmatrix -C white & kitty -e tty-clock -c -D -C 7'
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 
@@ -301,7 +319,6 @@ exec_always --no-startup-id autotiling
 default_border none
 
 # Brightness control
-
 
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
@@ -312,5 +329,12 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
+# to fix discord issues with wayland
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+
+# Make all windows partially transparent
+for_window [class=".*"] opacity 0.90
 
 

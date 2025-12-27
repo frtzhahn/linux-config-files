@@ -179,7 +179,7 @@ return {
 
       idle = {
         enabled = true,
-        timeout = 300000, 
+        timeout = 9000000, 
         show_status = true,
         ignore_focus = true,
         unidle_on_focus = true,
@@ -211,9 +211,9 @@ return {
 
       buttons = {
         {
-          label = 'View Repository',
+          label = 'view my shit',
           url = function(opts) 
-            return opts.repo_url or "https://github.com/YOUR_GITHUB_USERNAME" 
+            return opts.repo_url or "https://github.com/frtzhahn" 
           end,
         },
       },

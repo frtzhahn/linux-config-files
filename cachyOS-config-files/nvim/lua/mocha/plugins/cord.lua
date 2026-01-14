@@ -226,7 +226,7 @@ return {
         },
         server = {
           update = 'fetch',
-          timeout = 300000,
+          timeout = 3000,
         },
         discord = {
           reconnect = {

@@ -271,8 +271,8 @@ bar {
     font pango:JetBrainsMono Nerd Font 9 
 
     status_command bumblebee-status \
-        -m cpu memory load battery time disk pasink pasource sensors2 arch-update brightness caffeine spacer \
-        -a arch-update load  sensors2 \
+        -m cpu cpu2 memory load battery disk traffic time uptime pomodoro wakatime github sensors arch-update pasink pasource cmus caffeine playerctl \
+        -a cpu2 arch-update load memory github sensors2 sensors traffic \
         -p time.format="%H:%M:%S" \
            cpu.right-click="kitty -e btm" \
            memory.right-click="kitty -e btm" \
@@ -282,7 +282,11 @@ bar {
            time.right-click="kclock" \
            battery.right-click="kitty -e battop" \
            caffeine.right-click="systemctl sleep" \
-        -t night-powerline
+					 playerctl.format="{{artist}} - {{title}}" \
+					 wakatime.token="no api key here since some of u guys are weird" \
+					 wkatime.ranger="today" \
+					 wakatime.format="text" \
+        -t gruvbox-powerline
 
 
     colors {

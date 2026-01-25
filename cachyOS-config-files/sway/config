@@ -157,6 +157,28 @@ set $menu wmenu-run
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
+		#decent color to stacked/tabbed windows
+		#blue themed
+		# Class                 Border  Background Text    Indicator Child_border
+		# client.focused          #89b4fa #1e1e2e    #ffffff #89b4fa   #89b4fa
+		# client.focused_inactive #6c7086 #1e1e2e    #bac2de #6c7086   #6c7086
+		# client.unfocused        #313244 #181825    #a6adc8 #313244   #313244
+
+		#bnw themed 
+		# Class                 Border  Background Text    Indicator Child_border
+		client.focused          #bfbfbf #000000    #ffffff #bfbfbf   #bfbfbf
+		client.focused_inactive #333333 #000000    #888888 #333333   #333333
+		client.unfocused        #222222 #000000    #555555 #222222   #222222
+		client.urgent           #ff0000 #ff0000    #ffffff #ff0000   #ff0000
+
+		# gruvbox theme
+		# Class                 Border  Background Text    Indicator Child_border
+		# client.focused          #b8bb26 #1d2021    #ebdbb2 #b8bb26   #b8bb26
+		# client.focused_inactive #928374 #282828    #a89984 #928374   #928374
+		# client.unfocused        #3c3836 #3c3836    #a89984 #3c3836   #3c3836
+		# client.urgent           #fb4934 #fb4934    #ebdbb2 #fb4934   #fb4934
+
+
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
@@ -240,14 +262,26 @@ bindsym $mod+r mode "resize"
 
 
 
-# Bumblebee-status bar replacement
+#bumblebee-status bar replacement for waybar
+#-m for modules to be displayed
+#-a for autohiding unecessary modules they will show up for warnings
+#-p for module parameters and key-value pairing
 bar {
     position top
-    font pango:JetBrainsMono Nerd Font 9
+    font pango:JetBrainsMono Nerd Font 9 
 
     status_command bumblebee-status \
-        -m cpu memory load battery time pasink pasource \
-				-p time.format="%H:%M:%S" \
+        -m cpu memory load battery time disk pasink pasource sensors2 arch-update brightness caffeine spacer \
+        -a arch-update load  sensors2 \
+        -p time.format="%H:%M:%S" \
+           cpu.right-click="kitty -e btm" \
+           memory.right-click="kitty -e btm" \
+           load.right-click="kitty -e htop" \
+           disk.right-click="filelight" \
+           sensors2.right-click="kitty -e watch -n 1 sensors" \
+           time.right-click="kclock" \
+           battery.right-click="kitty -e battop" \
+           caffeine.right-click="systemctl sleep" \
         -t night-powerline
 
 
@@ -267,17 +301,14 @@ bar {
 #     swaybar_command waybar
 # }
 
-
-
-#new keybinds
-bindsym alt+e exec dolphin
-
+#custom keybinds for some programs
+bindsym ctrl+Shift+e exec dolphin
+bindsym ctrl+Shift+escape exec plasma-systemmonitor
 
 
 # Set gaps
 gaps inner 10
 gaps outer 20
-
 
 #keybinds for livewallpaer/wallpaper/screenlock
 bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
@@ -310,7 +341,15 @@ bindsym $mod+ctrl+Shift+2 exec systemctl reboot
 bindsym $mod+ctrl+Shift+3 exec systemctl sleep
 
 #skid keybind ahh
-bindsym Mod4+Shift+ctrl+y exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e cava & kitty -e htop & kitty -e cmatrix -C white & kitty -e tty-clock -c -D -C 7'
+#bnw themed sway 
+#prerequisites for this one dark themed kitten terminal adawaita dark/graphite and also dark theme for firefox or any other browsers
+bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
+#gruvbox theme
+#prerequisites are: kitten terminal gruvbox dark theme/gruvbox theme for firefpx or any other browsers and cava built in colorscheme
+# bindsym alt+Shift+ctrl+3 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/3.jpg fill; kitty -e genact &  kitty -e cava & kitty -e glances & kitty -e unimatrix -c green -s 99 & kitty -e tty-clock -c -D' 
+
+
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 
@@ -320,8 +359,8 @@ default_border none
 
 # Brightness control
 
-bindsym XF86MonBrightnessUp exec brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 input "type:touchpad" {
     dwt enabled
@@ -337,4 +376,14 @@ exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESK
 # Make all windows partially transparent
 for_window [class=".*"] opacity 0.90
 
+input type:touchpad {
+    # CRITICAL: This allows keyboard + mouse at the same time
+    dwt disabled
 
+    # GAMING: Makes the cursor speed consistent (good for aiming)
+    accel_profile flat
+    pointer_accel 0.2
+
+    # PREFERENCE: Makes scrolling work like a normal mouse wheel
+    natural_scroll disabled
+}

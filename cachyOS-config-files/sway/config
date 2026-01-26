@@ -271,21 +271,29 @@ bar {
     font pango:JetBrainsMono Nerd Font 9 
 
     status_command bumblebee-status \
-        -m cpu cpu2 memory load battery disk traffic time uptime pomodoro wakatime github sensors arch-update pasink pasource cmus caffeine playerctl \
-        -a cpu2 arch-update load memory github sensors2 sensors traffic \
+        -m hostname cpu memory disk load battery network_traffic time uptime todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut caffeine playerctl \
+        -a network_traffic load sensors2 \
         -p time.format="%H:%M:%S" \
            cpu.right-click="kitty -e btm" \
-           memory.right-click="kitty -e btm" \
+           memory.right-click="/usr/bin/octopi-cachecleaner" \
            load.right-click="kitty -e htop" \
            disk.right-click="filelight" \
            sensors2.right-click="kitty -e watch -n 1 sensors" \
            time.right-click="kclock" \
            battery.right-click="kitty -e battop" \
            caffeine.right-click="systemctl sleep" \
-					 playerctl.format="{{artist}} - {{title}}" \
-					 wakatime.token="no api key here since some of u guys are weird" \
-					 wkatime.ranger="today" \
+					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
+					 wakatime.token="enter your wakatime api key here to make this work" \
+					 wakatime.range="today" \
 					 wakatime.format="text" \
+					 github.token="enter your github personal access token here with notification as the only enabled scope" \
+					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+					 pomodoro.work="30" \
+					 pomodoro.break="10" \
+					 shortcut.labels="" \
+					 shortcut.cmds="kitty -e ani-cli 'jjk'" \
+					 shortcut.delim=";" \
         -t gruvbox-powerline
 
 

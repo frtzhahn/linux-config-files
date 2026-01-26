@@ -364,9 +364,10 @@ bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/
 
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-
+#for auto tiling to be always active
 exec_always --no-startup-id autotiling
 
+#to remove the title bars on every window unless it is stacked
 default_border none
 
 # Brightness control
@@ -375,27 +376,29 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 input "type:touchpad" {
-    dwt enabled
+		#tap to click function on the touchpad to avoid pressing it too frequently
     tap enabled
+
+		#by pressing left and right click on the touchpad it acts like a mousewheel
     middle_emulation enabled
+
+    #to make my touchpad act like a mouse
+    dwt disabled
+
+    #to make the cursor speed consistent
+    accel_profile flat
+    pointer_accel 0.2
+
+    #to make scrolling work like a normal mouse wheel
+    natural_scroll disabled
+
 }
 
-# to fix discord issues with wayland
+#to fix discord streaming issues with wayland
 exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 
-# Make all windows partially transparent
+#all windows partially transparent can be adjusted by tweaking opacity value
 for_window [class=".*"] opacity 0.90
 
-input type:touchpad {
-    # CRITICAL: This allows keyboard + mouse at the same time
-    dwt disabled
-
-    # GAMING: Makes the cursor speed consistent (good for aiming)
-    accel_profile flat
-    pointer_accel 0.2
-
-    # PREFERENCE: Makes scrolling work like a normal mouse wheel
-    natural_scroll disabled
-}

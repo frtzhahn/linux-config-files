@@ -1,7 +1,6 @@
 require 'mocha.options'
 require 'mocha.keymaps'
 
-
 -- =============================
 -- Lazy Package Manager
 -- =============================
@@ -185,9 +184,13 @@ require('lazy').setup({
   require 'mocha.plugins.lsp',
   require 'mocha.plugins.cmp',
   require 'mocha.plugins.wakatime',
+  require 'mocha.plugins.bufferline',
   require 'mocha.plugins.oil',
-  require 'mocha.plugins.indents',
+  -- require 'mocha.plugins.indents',
   require 'mocha.plugins.gruvbox',
+  require 'mocha.plugins.live-server',
+  require 'mocha.plugins.cake',
+  require 'mocha.plugins.fleur',
 })
 
 

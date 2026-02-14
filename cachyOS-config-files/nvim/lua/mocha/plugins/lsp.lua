@@ -270,7 +270,7 @@ return {
         eslint = {},
         dockerls = {},
         clangd = {},
-        jdtls = {},
+        -- jdtls = {},
       }
 
       -- Ensure the servers and tools above are installed

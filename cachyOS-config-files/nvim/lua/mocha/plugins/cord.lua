@@ -141,10 +141,10 @@
 --     },
 --   },
 -- }
--- --
--- --
---
---
+
+
+
+
 
 --option 3
 --
@@ -155,7 +155,6 @@ return {
     build = './build',
     event = 'VeryLazy',
     opts = {
-      -- REMOVED: usercmds = true (Invalid option)
       log_level = 'error',
 
       editor = {
@@ -179,7 +178,7 @@ return {
 
       idle = {
         enabled = true,
-        timeout = 9000000, 
+        timeout = 90000000, 
         show_status = true,
         ignore_focus = true,
         unidle_on_focus = true,

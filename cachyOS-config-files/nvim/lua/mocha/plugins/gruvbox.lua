@@ -26,21 +26,21 @@
 -- }
 
 -- github themes
-return {
-  'projekt0n/github-nvim-theme',
-  name = 'github-theme',
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    require('github-theme').setup({
-      -- ...
-    })
-
-    -- vim.cmd('colorscheme github_dark_dimmed')
-    vim.cmd('colorscheme github_dark_high_contrast')
-    -- vim.cmd('colorscheme github_dark_default')
-  end,
-}
+-- return {
+--   'projekt0n/github-nvim-theme',
+--   name = 'github-theme',
+--   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+--   priority = 1000, -- make sure to load this before all the other start plugins
+--   config = function()
+--     require('github-theme').setup({
+--       -- ...
+--     })
+--
+--     -- vim.cmd('colorscheme github_dark_dimmed')
+--     vim.cmd('colorscheme github_light_high_contrast')
+--     -- vim.cmd('colorscheme github_dark_default')
+--   end,
+-- }
 
 
 --gruvbox v2
@@ -52,3 +52,14 @@ return {
 -- 	vim.cmd("colorscheme miasma")
 -- end,
 -- }
+
+
+--fleur theme
+return {
+  'aikhe/fleur.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd("colorscheme fleur")
+  end,
+}

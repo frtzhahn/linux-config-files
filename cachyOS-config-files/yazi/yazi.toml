@@ -60,6 +60,9 @@ rules = [
     #archives
     { mime = "application/zip", use = "archive" },
     { mime = "application/gzip", use = "archive" },
-    { mime = "application/x-tar", use = "archive" }
+    { mime = "application/x-tar", use = "archive" },
+
+		#images
+		{ mime = "image/*", use = "view" }
 
 ]

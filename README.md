@@ -1,24 +1,17 @@
 <div align="center">
 
-### ubuntu
-
-<br><br>
+## ubuntu LTS
 
 `screenshots`
 
-<img src="gallery/1.png"/>
-<img src="gallery/2.png"/>
-<br>
+![Screenshot 1](gallery/1.png)
+![Screenshot 2](gallery/2.png)
 
 ---
 
-### cachyOS
+## cachyOS
 
-<br><br>
-<img src="gallery/3.png"/>
-<img src="gallery/4.png"/>
-
+![Screenshot 3](gallery/3.png)
+![Screenshot 4](gallery/4.png)
 
 </div>
-
-

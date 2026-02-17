@@ -23,7 +23,7 @@ source $ZSH/oh-my-zsh.sh
 # Powerlevel10k prompt (must be HERE before anything prints)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# --- Aliases ---
+ # Aliases
 alias ls='eza'
 alias ll='eza -lh'
 alias la='eza -a'
@@ -40,14 +40,18 @@ else
   :
 fi
 
-
+#aliases
 alias close='konsole -e zsh'
-alias code='cd ~/Documents/programming/coding'
+alias programming='cd ~/Documents/programming && nvim'
 alias cls='clear'
-alias minecraft='flatpak run org.prismlauncher.PrismLauncher'
-
+alias minecraft-java='prismlauncher'
+alias minecraft-bedrock='flatpak run io.mrarm.mcpelauncher'
+alias figma='figma-linux --enable-features=UseOzonePlatform --ozone-platform=wayland'
+alias lock='swaylock --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5'
 . "/home/mocha/.deno/env"
+alias focus='/home/mocha/focus/focus.sh'
 
 export EDITOR=nvim
 export VISUAL=nvim
 
+export PATH=$HOME/.npm-global/bin:$PATH

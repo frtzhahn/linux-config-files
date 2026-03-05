@@ -271,8 +271,8 @@ bar {
     font pango:JetBrainsMono Nerd Font 9 
 
     status_command bumblebee-status \
-        -m hostname cpu memory disk load battery network_traffic time uptime todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut caffeine playerctl \
-        -a network_traffic load sensors2 \
+        -m hostname cpu memory load battery network_traffic time todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut playerctl \
+        -a network_traffic load sensors2 github uptime disk\
         -p time.format="%H:%M:%S" \
            cpu.right-click="kitty -e btm" \
            memory.right-click="/usr/bin/octopi-cachecleaner" \
@@ -281,7 +281,6 @@ bar {
            sensors2.right-click="kitty -e watch -n 1 sensors" \
            time.right-click="kclock" \
            battery.right-click="kitty -e battop" \
-           caffeine.right-click="systemctl sleep" \
 					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
 					 wakatime.token="enter your wakatime api key here to make this work" \
 					 wakatime.range="today" \
@@ -290,9 +289,10 @@ bar {
 					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 					 pomodoro.work="30" \
-					 pomodoro.break="10" \
-					 shortcut.labels="" \
-					 shortcut.cmds="kitty -e ani-cli 'jjk'" \
+					 pomodoro.break="3" \
+					 pomodoro.notify="paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" \
+					 shortcut.labels=";󰒲;󰂯" \
+					 shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
 					 shortcut.delim=";" \
         -t gruvbox-powerline
 
@@ -315,7 +315,7 @@ bar {
 
 #custom keybinds for some programs
 bindsym ctrl+Shift+e exec dolphin
-bindsym ctrl+Shift+escape exec plasma-systemmonitor
+bindsym ctrl+Shift+escape exec kitty -e btm
 
 
 # Set gaps
@@ -324,8 +324,8 @@ gaps outer 20
 
 #keybinds for livewallpaer/wallpaper/screenlock
 bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
-bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/anti-spiral.jpg fill
-bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/blackhole.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/wallpapersden.com_k-planet-pixel-art_4096x2048.jpg fill
+bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/galaxyjpg fill
 bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/blue.jpg fill
 bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/black.png fill
 bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/1.jpg fill
@@ -355,10 +355,17 @@ bindsym $mod+ctrl+Shift+3 exec systemctl sleep
 #skid keybind ahh
 #bnw themed sway 
 #prerequisites for this one dark themed kitten terminal adawaita dark/graphite and also dark theme for firefox or any other browsers
-bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/wallpapersden.com_k-planet-pixel-art_4096x2048.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
 bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
+
 #gruvbox theme
 #prerequisites are: kitten terminal gruvbox dark theme/gruvbox theme for firefpx or any other browsers and cava built in colorscheme
+bindsym alt+Shift+ctrl+3 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/3.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+4 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/5.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
+
+#random cli programs
+bindsym alt+Shift+ctrl+r exec sh -c 'kitty -e lavat & kitty -e mapscii & kitty -e nyancat & kitty -e asciiquarium'
+
 # bindsym alt+Shift+ctrl+3 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/3.jpg fill; kitty -e genact &  kitty -e cava & kitty -e glances & kitty -e unimatrix -c green -s 99 & kitty -e tty-clock -c -D' 
 
 
@@ -401,4 +408,24 @@ exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESK
 
 #all windows partially transparent can be adjusted by tweaking opacity value
 for_window [class=".*"] opacity 0.90
+
+#gesture effect using touchpad with 3 fingers
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+
+
+# Idle configuration with swaylock-effects
+# exec swayidle -w \
+#     timeout 300 'pgrep -x swaylock || swaylock -f --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5' \
+#     timeout 600 'swaymsg "output * power off"' \
+#     resume 'swaymsg "output * power on"' \
+#     timeout 1800 'systemctl suspend' \
+#     before-sleep 'pgrep -x swaylock || swaylock -f --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5'
+'
+# executes lock screen and sleep script 
+exec_always bash ~/.config/sway/idle.sh
+
+#night light
+exec_always wlsunset -t 6500 -T 6500
+
 

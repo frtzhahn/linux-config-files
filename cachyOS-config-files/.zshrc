@@ -1,57 +1,122 @@
+# to remove prompts while opening terminals
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
-
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# powerlevel10k instant prompt Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Optional: quiet the warning
-#typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-# --- Oh My Zsh ---
+# path to my oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# zsh theme to load 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Plugins
+# standard plugins for command highlighting and command suggestions
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-# Source Oh My Zsh
+# Load Oh My Zsh core (This is the crucial "built-in" trigger)
 source $ZSH/oh-my-zsh.sh
 
-# Powerlevel10k prompt (must be HERE before anything prints)
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Ensures global npm packages (like live-server) are executable
+export PATH="$HOME/.npm-global/bin:$PATH"
 
- # Aliases
-alias ls='eza'
-alias ll='eza -lh'
-alias la='eza -a'
-alias tree='eza -T'
+# Forces automated tools to use your preferred browser
+export BROWSER="zen-browser"
 
-
-if [[ $TERM == "xterm-kitty" ]]; then
-    fastfetch
-    echo "Welcome back Mocha <3"
-elif [[ $TERM == "alacritty" ]]; then
-    neofetch
-    echo "Welcome back Mocha <3"
-else
-  :
-fi
-
-#aliases
-alias close='konsole -e zsh'
-alias programming='cd ~/Documents/programming && nvim'
-alias cls='clear'
+# terminal shortcuts
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 alias minecraft-java='prismlauncher'
 alias minecraft-bedrock='flatpak run io.mrarm.mcpelauncher'
+alias programming='cd ~/Documents/programming && nvim'
+alias cls='clear'
 alias figma='figma-linux --enable-features=UseOzonePlatform --ozone-platform=wayland'
-alias lock='swaylock --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5'
-. "/home/mocha/.deno/env"
+alias lock='swaylock --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5' . "/home/mocha/.deno/env"
 alias focus='/home/mocha/focus/focus.sh'
 
+# editors
+alias v='nvim'
+alias vim='nvim'
 export EDITOR=nvim
 export VISUAL=nvim
 
-export PATH=$HOME/.npm-global/bin:$PATH
+# system updates on arch based distros
+alias update='sudo pacman -Syu'
+# alias update='yay pacman -Syu'
+# alias update='paru pacman -Syu'
+
+
+
+# changes terminal directory based on what directory yazi is focused in
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+# changes terminal directory based on what directory ranger is focused in
+function r() {
+    local tmp="$(mktemp -t "ranger-cwd.XXXXXX")"
+    ranger "$@" --choosedir="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+# to make my terminal remember the increments
+STATE_FILE="$HOME/.term_state"
+
+# Initialize the state file if it doesn't exist
+if [ ! -f "$STATE_FILE" ]; then
+    echo "1" > "$STATE_FILE"
+fi
+
+STATE=$(cat "$STATE_FILE")
+
+# Execute the payload based on the state (1 through 5)
+# this will make launching terminals a bit slower like 0.4 seconds
+case $STATE in
+    1)
+        fastfetch -c config.jsonc 
+        ;;
+    2)
+        figlet -w 200 -f  "ANSI Shadow" "Welcome Back Mocha" 
+				todo.sh list
+        ;;
+    3)
+        fastfetch -c config2.jsonc
+        ;;
+    4)
+        fastfetch -c config4.jsonc
+        ;;
+    5)
+        figlet -w 200 -f "ANSI Shadow" "I LOVE YOU MY BEBU :3"
+        ;;
+    6)
+        fastfetch -c config5.jsonc
+        ;;
+esac
+
+# Increment the state, loop back to 1 if over 5
+NEXT_STATE=$((STATE + 1))
+if [ $NEXT_STATE -gt 6 ]; then
+    NEXT_STATE=1
+fi
+
+# Save the new state
+echo "$NEXT_STATE" > "$STATE_FILE"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# to access go installed programs
+export PATH="$HOME/go/bin:$PATH"

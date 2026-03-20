@@ -187,10 +187,10 @@ require('lazy').setup({
   require 'mocha.plugins.bufferline',
   require 'mocha.plugins.oil',
   -- require 'mocha.plugins.indents',
-  require 'mocha.plugins.gruvbox',
+  require 'mocha.plugins.themes',
   require 'mocha.plugins.live-server',
   require 'mocha.plugins.cake',
-  require 'mocha.plugins.fleur',
+  require 'mocha.plugins.wrapped',
 })
 
 

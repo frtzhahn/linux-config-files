@@ -7,10 +7,10 @@ return {
     opts = {
       -- You can leave this empty {}, or add the "Default Config" items here
       border = true, -- I recommend true for a cleaner look
-    	path = "/home/mocha/Documents/programming/coding/java-programs",
+    	path = "/home/mocha/Documents/amoeba/",
       size = {
-        width = 120,
-        height = 40,
+        width = 100,
+        height = 30,
       },
       cap = {
         commits = 1000, -- It stops counting at 1000 to keep it fast

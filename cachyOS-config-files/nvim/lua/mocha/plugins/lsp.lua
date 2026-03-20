@@ -250,6 +250,10 @@ return {
         pyright = {},
         html = {},
 
+				lemminx = {
+          filetypes = { 'xml', 'xsd', 'xsl', 'xslt', 'svg', 'fxml' },
+        },
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },

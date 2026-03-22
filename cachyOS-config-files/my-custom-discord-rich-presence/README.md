@@ -19,11 +19,11 @@ To make this work, Discord needs a unique ID number to connect your status to yo
 4. To add custom images go to **Rich Presence -> Art Assets** on the left menu. Upload the images you want to show on your profile (make the image dimensions exceeds 512x512 pixels). Give them short simple names make sure to remember them and place them in this part of the script `"large_image": {"key": "NAME-OF-THE-ART-ASSET-HERE",`.
 5. To add some texts you can modify these areas as you wish `"details": "CUSTOM-TEXT-HERE", "state": "CUSTOM-TEXT-HERE",`
 
-after these little tweaks you can run the command on your terminal "linux-discord-rich-presence -c "YOUR-SCRIPT-FILE-PATH-HERE"
+after these little tweaks you can run the command on your terminal `linux-discord-rich-presence -c "YOUR-SCRIPT-FILE-PATH-HERE`
 
 # Screenshots
 
-![Screenshot 1](gallery/cachyos-swaywm.png)
+![Screenshot 1](assets/cachyos-swaywm.png)
 ![Screenshot 2](assets/cachyos-kdeplasma.png)
 ![Screenshot 3](assets/gemini-cli.png)
 ![Screenshot 4](assets/kdenlive.png)

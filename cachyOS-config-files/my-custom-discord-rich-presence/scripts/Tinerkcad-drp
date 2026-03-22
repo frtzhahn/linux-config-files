@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# The JSON must remain on a single line for the parser.
-while true; do
-  echo '[{"application_id": 1485183041885442179, "details": "Planning out something...", "state": "IOT practice", "large_image": {"key": "tinkercad", "text": "IOT Practice area"}, "small_image": {"key": "arduino", "text": "doing arduino"}}]'
-  sleep 15
-done

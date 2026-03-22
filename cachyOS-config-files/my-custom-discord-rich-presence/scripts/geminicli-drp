@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# The text must remain on a single line so it can be read correctly.
-while true; do
-  echo '[{"application_id": 1485194553416880238, "details": "Orchestrating aldrin'\''s project", "state": "on kitty terminal - zsh command-line shell", "large_image": {"key": "gemini", "text": "my personal Senior Software Engineer on a terminal ＼⁠(⁠^⁠o⁠^⁠)⁠／"}, "small_image": {"key": "cli-logo", "text": "goated CLI"}}]'
-  sleep 15
-done

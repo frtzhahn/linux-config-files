@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# The JSON must remain on a single line for the parser.
+while true; do
+  echo '[{"application_id": 1485189428946403359, "details": "Linux distro currently in use", "large_image": {"key": "cachyos", "text": "Arch based "}, "small_image": {"key": "kde", "text": "using KDE plasma"}}]'
+  sleep 15
+done

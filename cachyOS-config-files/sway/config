@@ -261,11 +261,6 @@ bindsym $mod+r mode "resize"
 #include /etc/sway/config.d/*
 
 
-
-#bumblebee-status bar replacement for waybar
-#-m for modules to be displayed
-#-a for autohiding unecessary modules they will show up for warnings
-#-p for module parameters and key-value pairing
 bar {
     position top
     font pango:JetBrainsMono Nerd Font 9 
@@ -296,7 +291,6 @@ bar {
 					 shortcut.delim=";" \
         -t gruvbox-powerline
 
-
     colors {
         statusline #32323200  
         background #32323200
@@ -309,12 +303,13 @@ bar {
 
 
 
+
 # bar {
 #     swaybar_command waybar
 # }
 
 #custom keybinds for some programs
-bindsym ctrl+Shift+e exec dolphin
+bindsym ctrl+Shift+e exec thunar 
 bindsym ctrl+Shift+escape exec kitty -e btm
 
 
@@ -324,15 +319,18 @@ gaps outer 20
 
 #keybinds for livewallpaer/wallpaper/screenlock
 bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
-bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/wallpapersden.com_k-planet-pixel-art_4096x2048.jpg fill
-bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/galaxyjpg fill
-bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/blue.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
+bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
+bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/La_Chambre_à_Arles_by_Vincent_van_Gogh_from_C2RMF.jpg fill
 bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/black.png fill
-bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/1.jpg fill
-bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/2.jpg fill
-bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/3.jpg fill 
-bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
-bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/5.jpg fill 
+bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
+bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
+bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Meadow-Lake.jpg fill 
+bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
+bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+
+# custom wallpapers
+bindsym ctrl+Shift+1 output * bg /home/mocha/Pictures/saved-pictures/latte-and-mocha.png center
 
 # Sticky window
 bindsym $mod+Shift+s sticky toggle
@@ -421,11 +419,22 @@ bindgesture swipe:left workspace next
 #     resume 'swaymsg "output * power on"' \
 #     timeout 1800 'systemctl suspend' \
 #     before-sleep 'pgrep -x swaylock || swaylock -f --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5'
-'
-# executes lock screen and sleep script 
 exec_always bash ~/.config/sway/idle.sh
 
 #night light
-exec_always wlsunset -t 6500 -T 6500
+# exec_always wlsunset -t 6500 -T 6500
 
+#battery notification and suspend protocol script
+exec /home/mocha/battery_sentinel.sh
 
+# auto-mounting usb devices on thunar
+exec thunar --daemon
+
+# swaybar/bumblee bee status bar toggle script keybind
+bindsym $mod+Shift+b exec bash ~/.config/sway/toggle_bar.sh
+
+# multi-function screenshot grim + slurp + satty
+bindsym $mod+Print exec grim -g "$(slurp -b '#00000044' -c '#00000000' -d)" - | satty --filename - --fullscreen
+
+# keyboard backlight toggle 
+bindsym $mod+Shift+k exec bash ~/.config/sway/backlight_toggle.sh

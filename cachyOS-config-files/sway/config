@@ -261,52 +261,56 @@ bindsym $mod+r mode "resize"
 #include /etc/sway/config.d/*
 
 
+# bar {
+#     position top
+#     font pango:JetBrainsMono Nerd Font 9 
+#
+#     status_command bumblebee-status \
+#         -m hostname cpu memory load battery network_traffic time todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut playerctl \
+#         -a network_traffic load sensors2 github uptime disk\
+#         -p time.format="%H:%M:%S" \
+#            cpu.right-click="kitty -e btm" \
+#            memory.right-click="/usr/bin/octopi-cachecleaner" \
+#            load.right-click="kitty -e htop" \
+#            disk.right-click="filelight" \
+#            sensors2.right-click="kitty -e watch -n 1 sensors" \
+#            time.right-click="kclock" \
+#            battery.right-click="kitty -e battop" \
+# 					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
+# 					 wakatime.token="enter your wakatime api key here to make this work" \
+# 					 wakatime.range="today" \
+# 					 wakatime.format="text" \
+# 					 github.token="enter your github personal access token here with notification as the only enabled scope" \
+# 					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+# 					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+# 					 pomodoro.work="30" \
+# 					 pomodoro.break="3" \
+# 					 pomodoro.notify="paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" \
+# 					 shortcut.labels=";󰒲;󰂯" \
+# 					 shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
+# 					 shortcut.delim=";" \
+#         -t gruvbox-powerline
+#
+#     colors {
+#         statusline #32323200  
+#         background #32323200
+#         separator           #32323200
+#         active_workspace    #32323200 #32323200 #32323200
+#         focused_workspace   #32323200 #323232FF #000000
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+
+
+
 bar {
-    position top
-    font pango:JetBrainsMono Nerd Font 9 
-
-    status_command bumblebee-status \
-        -m hostname cpu memory load battery network_traffic time todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut playerctl \
-        -a network_traffic load sensors2 github uptime disk\
-        -p time.format="%H:%M:%S" \
-           cpu.right-click="kitty -e btm" \
-           memory.right-click="/usr/bin/octopi-cachecleaner" \
-           load.right-click="kitty -e htop" \
-           disk.right-click="filelight" \
-           sensors2.right-click="kitty -e watch -n 1 sensors" \
-           time.right-click="kclock" \
-           battery.right-click="kitty -e battop" \
-					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
-					 wakatime.token="enter your wakatime api key here to make this work" \
-					 wakatime.range="today" \
-					 wakatime.format="text" \
-					 github.token="enter your github personal access token here with notification as the only enabled scope" \
-					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
-					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
-					 pomodoro.work="30" \
-					 pomodoro.break="3" \
-					 pomodoro.notify="paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" \
-					 shortcut.labels=";󰒲;󰂯" \
-					 shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
-					 shortcut.delim=";" \
-        -t gruvbox-powerline
-
-    colors {
-        statusline #32323200  
-        background #32323200
-        separator           #32323200
-        active_workspace    #32323200 #32323200 #32323200
-        focused_workspace   #32323200 #323232FF #000000
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command true
 }
 
-
-
-
-# bar {
-#     swaybar_command waybar
-# }
+bar {
+    swaybar_command waybar
+}
 
 #custom keybinds for some programs
 bindsym ctrl+Shift+e exec thunar 

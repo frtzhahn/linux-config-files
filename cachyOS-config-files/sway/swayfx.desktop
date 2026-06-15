@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=SwayFX
+Comment=Sway with GPU-accelerated effects
+Exec=sway -c /home/mocha/.config/sway/config_fx
+Type=Application
+DesktopNames=sway;wlroots

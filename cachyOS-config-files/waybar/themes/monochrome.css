@@ -1,0 +1,7 @@
+@define-color bg_bar rgba(10, 10, 10, 0.85);
+@define-color border_color rgba(255, 255, 255, 0.25);
+@define-color text_color #ffffff;
+@define-color accent_blue #e0e0e0;
+@define-color accent_purple #aaaaaa;
+@define-color accent_green #cccccc;
+@define-color accent_red #ad0715;

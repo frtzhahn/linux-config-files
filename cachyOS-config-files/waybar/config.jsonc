@@ -1,0 +1,140 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+
+  "modules-left": ["sway/workspaces", "cpu", "memory", "load", "temperature"],
+  "modules-center": ["custom/wakatime", "clock"],
+  "modules-right": [
+    "custom/media-prev",
+    "mpris",
+    "custom/media-next",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "pulseaudio#source",
+    "battery",
+    "tray"
+  ],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 2,
+    "states": {
+      "warning": 40,
+      "critical": 80
+    },
+    "on-click-right": "kitty -e btm"
+  },
+  "memory": {
+    "format": " {percentage}%",
+    "tooltip-format": "{used:.1f}GiB / {total:.1f}GiB",
+    "interval": 3,
+    "states": {
+      "warning": 40,
+      "critical": 80
+    },
+    "on-click-right": "/usr/bin/octopi-cachecleaner"
+  },
+  "load": {
+    "format": " {load1}",
+    "interval": 5,
+    "states": {
+      "warning": 3.0,
+      "critical": 4.0
+    },
+    "on-click-right": "kitty -e htop"
+  },
+  "temperature": {
+    "thermal-zone": 8,
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C",
+    "states": {
+      "warning": 40,
+      "critical": 80
+    },
+    "on-click-right": "kitty -e watch -n 1 sensors"
+  },
+  "custom/wakatime": {
+    "exec": "bash ~/.config/waybar/scripts/wakatime.sh",
+    "interval": 600,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "xdg-open https://wakatime.com/dashboard"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "  {:%H:%M:%S}",
+    "format-alt": "  {:%Y-%m-%d}",
+    "on-click-right": "kclock"
+  },
+  "custom/media-prev": {
+    "format": "",
+    "on-click": "playerctl previous",
+    "tooltip": false
+  },
+  "mpris": {
+    "format": "{title}",
+    "max-length": 20,
+    "tooltip-format": "{artist} - {title} ({album})",
+    "on-click-right": "playerctl play-pause"
+  },
+  "custom/media-next": {
+    "format": "",
+    "on-click": "playerctl next",
+    "tooltip": false
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager"
+  },
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "⚠",
+    "tooltip-format": "{essid}\nUp: {bandwidthUpBits} | Down: {bandwidthDownBits}",
+    "on-click": "kitty -e impala"
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " muted",
+    "scroll-step": 5,
+    "on-click": "kitty -e wiremix",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "pulseaudio#source": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " muted",
+    "scroll-step": 5,
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "kitty -e wiremix"
+  },
+  "battery": {
+    "interval": 5,
+    "states": {
+      "warning": 59,
+      "critical": 39
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "  {capacity}% {icon}",
+    "format-icons": ["","","","",""],
+    "on-click-right": "kitty -e battop"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  }
+}

@@ -1,0 +1,516 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt. and Mod4 for win key
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term kitty
+# Your preferred application launcher
+set $menu wmenu-run
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#  output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input type:touchpad {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+#   input type:keyboard {
+#       xkb_layout "eu"
+#   }
+#
+# You can also configure each device individually.
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+q exec $term
+
+     # Start drop down terminal
+     #bindsym $mod+F12 exec yakuake
+
+    #alternative terminal
+     bindsym $mod+Return exec alacritty
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec fuzzel
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+r reload
+
+    # Exit sway (logs you out of your Wayland session) via custom Fuzzel power menu
+    bindsym $mod+Shift+e exec /home/mocha/.config/fuzzel/power-menu.sh
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+		#decent color to stacked/tabbed windows
+		#blue themed
+		# Class                 Border  Background Text    Indicator Child_border
+		# client.focused          #89b4fa #1e1e2e    #ffffff #89b4fa   #89b4fa
+		# client.focused_inactive #6c7086 #1e1e2e    #bac2de #6c7086   #6c7086
+		# client.unfocused        #313244 #181825    #a6adc8 #313244   #313244
+
+		#bnw themed 
+		# Class                 Border  Background Text    Indicator Child_border
+		client.focused          #bfbfbf #000000    #ffffff #bfbfbf   #bfbfbf
+		client.focused_inactive #333333 #000000    #888888 #333333   #333333
+		client.unfocused        #222222 #000000    #555555 #222222   #222222
+		client.urgent           #ff0000 #ff0000    #ffffff #ff0000   #ff0000
+
+		# gruvbox theme
+		# Class                 Border  Background Text    Indicator Child_border
+		# client.focused          #b8bb26 #1d2021    #ebdbb2 #b8bb26   #b8bb26
+		# client.focused_inactive #928374 #282828    #a89984 #928374   #928374
+		# client.unfocused        #3c3836 #3c3836    #a89984 #3c3836   #3c3836
+		# client.urgent           #fb4934 #fb4934    #ebdbb2 #fb4934   #fb4934
+
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+#bar {
+#    position top
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
+
+#include /etc/sway/config.d/*
+
+
+
+#bumblebee-status bar replacement for waybar
+#-m for modules to be displayed
+#-a for autohiding unecessary modules they will show up for warnings
+#-p for module parameters and key-value pairing
+# bar {
+#     position top
+#     font pango:JetBrainsMono Nerd Font 9 
+#
+#     status_command bumblebee-status \
+#         -m hostname cpu memory load battery network_traffic time todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut playerctl \
+#         -a network_traffic load sensors2 github uptime disk\
+#         -p time.format="%H:%M:%S" \
+#            cpu.right-click="kitty -e btm" \
+#            memory.right-click="/usr/bin/octopi-cachecleaner" \
+#            load.right-click="kitty -e htop" \
+#            disk.right-click="filelight" \
+#            sensors2.right-click="kitty -e watch -n 1 sensors" \
+#            time.right-click="kclock" \
+#            battery.right-click="kitty -e battop" \
+# 					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
+# 					 wakatime.token="enter your wakatime api key here to make this work" \
+# 					 wakatime.range="today" \
+# 					 wakatime.format="text" \
+# 					 github.token="enter your github personal access token here with notification as the only enabled scope" \
+# 					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+# 					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+# 					 pomodoro.work="30" \
+# 					 pomodoro.break="3" \
+# 					 pomodoro.notify="paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" \
+# 					 shortcut.labels=";󰒲;󰂯" \
+# 					 shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
+# 					 shortcut.delim=";" \
+#         -t gruvbox-powerline
+#
+#
+#     colors {
+#         statusline #32323200  
+#         background #32323200
+#         separator           #32323200
+#         active_workspace    #32323200 #32323200 #32323200
+#         focused_workspace   #32323200 #323232FF #000000
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+
+# bar {
+#     id bar-0
+#     swaybar_command true
+#     position top
+#     font pango:JetBrainsMono Nerd Font 9 
+#
+#     status_command bumblebee-status \
+#         -m hostname cpu memory load battery network_traffic time todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut playerctl \
+#         -a network_traffic load sensors2 github uptime disk\
+#         -p time.format="%H:%M:%S" \
+#            cpu.right-click="kitty -e btm" \
+#            memory.right-click="/usr/bin/octopi-cachecleaner" \
+#            load.right-click="kitty -e htop" \
+#            disk.right-click="filelight" \
+#            sensors2.right-click="kitty -e watch -n 1 sensors" \
+#            time.right-click="kclock" \
+#            battery.right-click="kitty -e battop" \
+#                      playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
+#                      wakatime.token="enter your wakatime api key here to make this work" \
+#                      wakatime.range="today" \
+#                      wakatime.format="text" \
+#                      github.token="enter your github personal access token here with notification as the only enabled scope" \
+#                      todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+#                      todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+#                      pomodoro.work="30" \
+#                      pomodoro.break="3" \
+#                      pomodoro.notify="paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" \
+#                      shortcut.labels=";󰒲;󰂯" \
+#                      shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
+#                      shortcut.delim=";" \
+#         -t gruvbox-powerline
+#
+#     colors {
+#         statusline #32323200  
+#         background #32323200
+#         separator           #32323200
+#         active_workspace    #32323200 #32323200 #32323200
+#         focused_workspace   #32323200 #323232FF #000000
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+
+bar {
+    swaybar_command true
+}
+
+bar {
+    swaybar_command waybar
+}
+
+
+
+#custom keybinds for some programs
+bindsym ctrl+Shift+e exec thunar 
+bindsym ctrl+Shift+escape exec kitty -e btm
+
+
+# Set gaps
+gaps inner 10
+gaps outer 20
+
+#keybinds for livewallpaer/wallpaper/screenlock
+bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
+bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
+bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/La_Chambre_à_Arles_by_Vincent_van_Gogh_from_C2RMF.jpg fill
+bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/black.png fill
+bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
+bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
+bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Meadow-Lake.jpg fill 
+bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
+bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+
+# custom wallpapers
+bindsym ctrl+Shift+1 output * bg /home/mocha/Pictures/saved-pictures/latte-and-mocha.png center
+
+# Sticky window
+bindsym $mod+Shift+s sticky toggle
+
+
+# removes the window title bar for kitty
+for_window [app_id="kitty"] border pixel 0
+
+# set global default borders
+default_border pixel 0
+default_floating_border pixel 0
+
+
+
+#for systemctl
+bindsym $mod+ctrl+Shift+1 exec systemctl suspend
+bindsym $mod+ctrl+Shift+2 exec systemctl sleep 
+bindsym $mod+ctrl+Shift+3 exec systemctl reboot
+
+#skid keybind ahh
+#bnw themed sway 
+#prerequisites for this one dark themed kitten terminal adawaita dark/graphite and also dark theme for firefox or any other browsers
+bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/wallpapersden.com_k-planet-pixel-art_4096x2048.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
+
+#gruvbox theme
+#prerequisites are: kitten terminal gruvbox dark theme/gruvbox theme for firefpx or any other browsers and cava built in colorscheme
+bindsym alt+Shift+ctrl+3 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/3.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+4 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/5.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
+
+#random cli programs
+bindsym alt+Shift+ctrl+r exec sh -c 'kitty -e lavat & kitty -e mapscii & kitty -e nyancat & kitty -e asciiquarium'
+
+# bindsym alt+Shift+ctrl+3 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/3.jpg fill; kitty -e genact &  kitty -e cava & kitty -e glances & kitty -e unimatrix -c green -s 99 & kitty -e tty-clock -c -D' 
+
+
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+#for auto tiling to be always active
+exec_always --no-startup-id autotiling
+
+#to remove the title bars on every window unless it is stacked
+default_border none
+
+# Brightness control
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+input "type:touchpad" {
+		#tap to click function on the touchpad to avoid pressing it too frequently
+    tap enabled
+
+		#by pressing left and right click on the touchpad it acts like a mousewheel
+    middle_emulation enabled
+
+    #to make my touchpad act like a mouse
+    dwt disabled
+
+    #to make the cursor speed consistent
+    accel_profile flat
+    pointer_accel 0.2
+
+    #to make scrolling work like a normal mouse wheel
+    natural_scroll disabled
+
+}
+
+#to fix discord streaming issues with wayland
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr
+
+
+#all windows partially transparent can be adjusted by tweaking opacity value
+for_window [class=".*"] opacity 0.82
+
+#gesture effect using touchpad with 3 fingers
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+
+
+# Idle configuration with swaylock-effects
+# exec swayidle -w \
+#     timeout 300 'pgrep -x swaylock || swaylock -f --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5' \
+#     timeout 600 'swaymsg "output * power off"' \
+#     resume 'swaymsg "output * power on"' \
+#     timeout 1800 'systemctl suspend' \
+#     before-sleep 'pgrep -x swaylock || swaylock -f --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5'
+exec_always bash ~/.config/sway/idle.sh
+
+#night light
+# exec_always wlsunset -t 6500 -T 6500
+
+#battery notification and suspend protocol script
+exec /home/mocha/battery_sentinel.sh
+
+# auto-mounting usb devices on thunar
+exec thunar --daemon
+
+# swaybar/bumblee bee status bar toggle script keybind
+# bindsym $mod+Shift+b exec bash ~/.config/sway/toggle_bar.sh
+
+# multi-function screenshot grim + slurp + satty
+bindsym $mod+Print exec grim -g "$(slurp -b '#00000044' -c '#00000000' -d)" - | satty --filename - --fullscreen
+
+# keyboard backlight toggle 
+bindsym $mod+F1 exec bash ~/.config/sway/backlight_toggle.sh
+
+# =============================================================================
+#  SwayFX Shader Configurations (Native eye-candy)
+# =============================================================================
+
+# Window corner radius (rounded corners)
+corner_radius 26
+
+# Native GPU-accelerated shadows
+shadows enable
+shadow_blur_radius 4
+shadow_color #0000007f
+
+# Native GPU-accelerated blur (essential for semi-transparent windows readability)
+blur enable
+blur_xray disable
+blur_passes 2
+blur_radius 4
+
+# Layer effects for Fuzzel (applies compositor-level blur to launcher)
+layer_effects "fuzzel" blur enable
+
+

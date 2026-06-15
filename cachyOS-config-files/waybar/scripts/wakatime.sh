@@ -1,6 +1,6 @@
 #!/bin/bash
 # Retrieve token dynamically from ~/.wakatime.cfg or fallback to env var
-token=$(grep -oP '(?<=api_key\s?=\s?).*' ~/.wakatime.cfg 2>/dev/null | tr -d '\r\n')
+token=$(sed -n 's/^api_key\s*=\s*//p' ~/.wakatime.cfg 2>/dev/null | tr -d '\r\n')
 if [ -z "$token" ]; then
     token="$WAKATIME_API_KEY"
 fi

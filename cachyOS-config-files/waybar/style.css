@@ -2,10 +2,10 @@
    THEME LOADER (Uncomment the single theme you want to apply)
    ============================================================================= */
 
-@import "themes/tokyonight.css";
+/* @import "themes/tokyonight.css"; */
 /* @import "themes/catppuccin.css"; */
 /* @import "themes/gruvbox.css"; */
-/* @import "themes/nord.css"; */
+@import "themes/nord.css";
 /* @import "themes/monochrome.css"; */
 
 * {
@@ -48,7 +48,7 @@ window#waybar {
 }
 
 /* Modules styling */
-#workspaces, #cpu, #memory, #load, #temperature, #custom-wakatime, #clock, 
+#workspaces, #cpu, #memory, #load, #temperature, #disk, #custom-wakatime, #clock, 
 #custom-media-prev, #mpris, #custom-media-next, #bluetooth, #network, #pulseaudio, #battery, #tray {
     padding: 0 10px;
     margin: 0;
@@ -120,18 +120,18 @@ window#waybar {
 /* --- SYSTEM STATS WARNING STYLES (DRY) --- */
 
 /* Good State (Green by default: 0-39% / Low Temp / Low Load) */
-#cpu, #memory, #load, #temperature {
+#cpu, #memory, #load, #temperature, #disk {
     color: @accent_green;
 }
 
 /* Warning State (Yellow: 40-79% / Med Temp / Med Load) */
-#cpu.warning, #memory.warning, #load.warning, #temperature.warning {
+#cpu.warning, #memory.warning, #load.warning, #temperature.warning, #disk.warning {
     color: #e0af68;
     background: transparent;
 }
 
 /* Critical State (Red: >=80% / High Temp / High Load) */
-#cpu.critical, #memory.critical, #load.critical, #temperature.critical {
+#cpu.critical, #memory.critical, #load.critical, #temperature.critical, #disk.critical {
     color: @accent_red;
     background: transparent;
 }

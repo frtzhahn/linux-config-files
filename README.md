@@ -61,6 +61,8 @@ my main setup optimized for performance and aesthetics
   <img src="cachyOS-config-files/gallery/nvim-kde.png" width="48%">
   <img src="cachyOS-config-files/gallery/wallpapers1.gif" width="48%">
   <img src="cachyOS-config-files/gallery/linux-rice1.gif" width="100%">
+  <img src="https://github.com/user-attachments/assets/5ee6d357-328d-489f-9f37-2f01e6b6813d" width="48%">
+  <img src="https://github.com/user-attachments/assets/fd915c6e-cd4b-4c7b-b7ae-509bd7a13fcb" width="48%">
 </div>
 
 ---
@@ -99,11 +101,5 @@ fully modular lazy loaded config
 - **repo heatmaps and stats** `wrraped.lua`
 
 for more info about my nvim set up you can visit this [repository](https://github.com/frtzhahn/nvim-setup)
-
----
-
-<div align="center">
-  <img src="cachyOS-config-files/gallery/computer.gif" width="100%">
-</div>
 
 

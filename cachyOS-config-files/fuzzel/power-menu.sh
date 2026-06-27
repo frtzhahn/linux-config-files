@@ -3,7 +3,7 @@
 LOCK=" Lock"
 LOGOUT=" Logout"
 SUSPEND=" Suspend"
-REBOOT="\u21bb Reboot"
+REBOOT=" Reboot"
 SHUTDOWN=" Shutdown"
 
 CHOICE=$(echo -e "$LOCK\n$LOGOUT\n$SUSPEND\n$REBOOT\n$SHUTDOWN" | fuzzel --dmenu)

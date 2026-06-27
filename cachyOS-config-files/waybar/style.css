@@ -2,10 +2,10 @@
    THEME LOADER (Uncomment the single theme you want to apply)
    ============================================================================= */
 
-/* @import "themes/tokyonight.css"; */
+@import "themes/tokyonight.css";
 /* @import "themes/catppuccin.css"; */
 /* @import "themes/gruvbox.css"; */
-@import "themes/nord.css";
+/* @import "themes/nord.css"; */
 /* @import "themes/monochrome.css"; */
 
 * {

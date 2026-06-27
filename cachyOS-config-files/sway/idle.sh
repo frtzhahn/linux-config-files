@@ -1,12 +1,12 @@
 #!/bin/bash
-# prevents overlapping swayidle background processes
+# 1. Assassinate any old, overlapping swayidle background processes
 pkill -x swayidle
 
-# starts the fresh timer engine
+# 2. Start the fresh timer engine
 swayidle -w \
-    timeout 300 'bash ~/.config/sway/lock.sh' \
-    timeout 600 'swaymsg "output * dpms off"' \
+    timeout 1200000 'bash ~/.config/sway/lock.sh' \
+    timeout 1800000 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    timeout 900 'systemctl suspend' \
+    timeout 1800000 'systemctl suspend' \
     before-sleep 'bash ~/.config/sway/lock.sh' \
     after-resume 'swaymsg "output * dpms on"'

@@ -77,8 +77,7 @@ set $menu wmenu-run
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec wofi --show drun
-		# bindsym $mod+d exec wofi --show drun --allow-images
+    bindsym $mod+d exec fuzzel
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -261,6 +260,11 @@ bindsym $mod+r mode "resize"
 #include /etc/sway/config.d/*
 
 
+
+#bumblebee-status bar replacement for waybar
+#-m for modules to be displayed
+#-a for autohiding unecessary modules they will show up for warnings
+#-p for module parameters and key-value pairing
 # bar {
 #     position top
 #     font pango:JetBrainsMono Nerd Font 9 
@@ -277,10 +281,10 @@ bindsym $mod+r mode "resize"
 #            time.right-click="kclock" \
 #            battery.right-click="kitty -e battop" \
 # 					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
-# 					 wakatime.token="enter your wakatime api key here to make this work" \
+# 					 wakatime.token="" \
 # 					 wakatime.range="today" \
 # 					 wakatime.format="text" \
-# 					 github.token="enter your github personal access token here with notification as the only enabled scope" \
+# 					 github.token="" \
 # 					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 # 					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 # 					 pomodoro.work="30" \
@@ -289,6 +293,50 @@ bindsym $mod+r mode "resize"
 # 					 shortcut.labels=";󰒲;󰂯" \
 # 					 shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
 # 					 shortcut.delim=";" \
+#         -t gruvbox-powerline
+#
+#
+#     colors {
+#         statusline #32323200  
+#         background #32323200
+#         separator           #32323200
+#         active_workspace    #32323200 #32323200 #32323200
+#         focused_workspace   #32323200 #323232FF #000000
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+
+# bar {
+#     id bar-0
+#     swaybar_command true
+#     position top
+#     font pango:JetBrainsMono Nerd Font 9 
+#
+#     status_command bumblebee-status \
+#         -m hostname cpu memory load battery network_traffic time todo pomodoro wakatime github sensors sensors2 arch-update aur-update pasink pasource shortcut playerctl \
+#         -a network_traffic load sensors2 github uptime disk\
+#         -p time.format="%H:%M:%S" \
+#            cpu.right-click="kitty -e btm" \
+#            memory.right-click="/usr/bin/octopi-cachecleaner" \
+#            load.right-click="kitty -e htop" \
+#            disk.right-click="filelight" \
+#            sensors2.right-click="kitty -e watch -n 1 sensors" \
+#            time.right-click="kclock" \
+#            battery.right-click="kitty -e battop" \
+#                      playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
+#                      wakatime.token="" \
+#                      wakatime.range="today" \
+#                      wakatime.format="text" \
+#                      github.token="" \
+#                      todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+#                      todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
+#                      pomodoro.work="30" \
+#                      pomodoro.break="3" \
+#                      pomodoro.notify="paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" \
+#                      shortcut.labels=";󰒲;󰂯" \
+#                      shortcut.cmds="kitty -e ani-cli 'jjk';systemctl sleep;blueman-applet" \
+#                      shortcut.delim=";" \
 #         -t gruvbox-powerline
 #
 #     colors {
@@ -302,8 +350,6 @@ bindsym $mod+r mode "resize"
 # }
 
 
-
-
 bar {
     swaybar_command true
 }
@@ -311,6 +357,8 @@ bar {
 bar {
     swaybar_command waybar
 }
+
+
 
 #custom keybinds for some programs
 bindsym ctrl+Shift+e exec thunar 
@@ -321,17 +369,17 @@ bindsym ctrl+Shift+escape exec kitty -e btm
 gaps inner 10
 gaps outer 20
 
-#keybinds for livewallpaer/wallpaper/screenlock
-bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
-bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
-bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
-bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/La_Chambre_à_Arles_by_Vincent_van_Gogh_from_C2RMF.jpg fill
-bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/black.png fill
-bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
-bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
-bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Meadow-Lake.jpg fill 
+#keybinds for livewallpaer/wallpaper
 bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
-bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
+bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
+bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
+bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
+bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/wallpaper2.jpg fill
+bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/wallpaper1.jpg fill
+bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/wallpaper3.jpg fill
 
 # custom wallpapers
 bindsym ctrl+Shift+1 output * bg /home/mocha/Pictures/saved-pictures/latte-and-mocha.png center
@@ -351,8 +399,8 @@ default_floating_border pixel 0
 
 #for systemctl
 bindsym $mod+ctrl+Shift+1 exec systemctl suspend
-bindsym $mod+ctrl+Shift+2 exec systemctl reboot
-bindsym $mod+ctrl+Shift+3 exec systemctl sleep
+bindsym $mod+ctrl+Shift+2 exec systemctl sleep 
+bindsym $mod+ctrl+Shift+3 exec systemctl reboot
 
 #skid keybind ahh
 #bnw themed sway 
@@ -406,6 +454,7 @@ input "type:touchpad" {
 #to fix discord streaming issues with wayland
 exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr
 
 
 #all windows partially transparent can be adjusted by tweaking opacity value
@@ -435,10 +484,10 @@ exec /home/mocha/battery_sentinel.sh
 exec thunar --daemon
 
 # swaybar/bumblee bee status bar toggle script keybind
-bindsym $mod+Shift+b exec bash ~/.config/sway/toggle_bar.sh
+# bindsym $mod+Shift+b exec bash ~/.config/sway/toggle_bar.sh
 
 # multi-function screenshot grim + slurp + satty
 bindsym $mod+Print exec grim -g "$(slurp -b '#00000044' -c '#00000000' -d)" - | satty --filename - --fullscreen
 
 # keyboard backlight toggle 
-bindsym $mod+Shift+k exec bash ~/.config/sway/backlight_toggle.sh
+bindsym $mod+F1 exec bash ~/.config/sway/backlight_toggle.sh

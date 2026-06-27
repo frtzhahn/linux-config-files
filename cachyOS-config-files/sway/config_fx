@@ -159,16 +159,16 @@ set $menu wmenu-run
 		#decent color to stacked/tabbed windows
 		#blue themed
 		# Class                 Border  Background Text    Indicator Child_border
-		# client.focused          #89b4fa #1e1e2e    #ffffff #89b4fa   #89b4fa
-		# client.focused_inactive #6c7086 #1e1e2e    #bac2de #6c7086   #6c7086
-		# client.unfocused        #313244 #181825    #a6adc8 #313244   #313244
+		client.focused          #89b4fa #1e1e2e    #ffffff #89b4fa   #89b4fa
+		client.focused_inactive #6c7086 #1e1e2e    #bac2de #6c7086   #6c7086
+		client.unfocused        #313244 #181825    #a6adc8 #313244   #313244
 
 		#bnw themed 
 		# Class                 Border  Background Text    Indicator Child_border
-		client.focused          #bfbfbf #000000    #ffffff #bfbfbf   #bfbfbf
-		client.focused_inactive #333333 #000000    #888888 #333333   #333333
-		client.unfocused        #222222 #000000    #555555 #222222   #222222
-		client.urgent           #ff0000 #ff0000    #ffffff #ff0000   #ff0000
+		# client.focused          #bfbfbf #000000    #ffffff #bfbfbf   #bfbfbf
+		# client.focused_inactive #333333 #000000    #888888 #333333   #333333
+		# client.unfocused        #222222 #000000    #555555 #222222   #222222
+		# client.urgent           #ff0000 #ff0000    #ffffff #ff0000   #ff0000
 
 		# gruvbox theme
 		# Class                 Border  Background Text    Indicator Child_border
@@ -281,10 +281,10 @@ bindsym $mod+r mode "resize"
 #            time.right-click="kclock" \
 #            battery.right-click="kitty -e battop" \
 # 					 playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
-# 					 wakatime.token="enter your wakatime api key here to make this work" \
+# 					 wakatime.token="" \
 # 					 wakatime.range="today" \
 # 					 wakatime.format="text" \
-# 					 github.token="enter your github personal access token here with notification as the only enabled scope" \
+# 					 github.token="" \
 # 					 todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 # 					 todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 # 					 pomodoro.work="30" \
@@ -325,10 +325,10 @@ bindsym $mod+r mode "resize"
 #            time.right-click="kclock" \
 #            battery.right-click="kitty -e battop" \
 #                      playerctl.format="{{trunc(artist, 10)}} - {{trunc(title, 10)}}" \
-#                      wakatime.token="enter your wakatime api key here to make this work" \
+#                      wakatime.token="" \
 #                      wakatime.range="today" \
 #                      wakatime.format="text" \
-#                      github.token="enter your github personal access token here with notification as the only enabled scope" \
+#                      github.token="" \
 #                      todo.file="/home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 #                      todo.right-click="kitty -e nvim /home/mocha/Documents/amoeba/todo-cli-list/todo.txt" \
 #                      pomodoro.work="30" \
@@ -369,17 +369,17 @@ bindsym ctrl+Shift+escape exec kitty -e btm
 gaps inner 10
 gaps outer 20
 
-#keybinds for livewallpaer/wallpaper/screenlock
-bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
-bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
-bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
-bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/La_Chambre_à_Arles_by_Vincent_van_Gogh_from_C2RMF.jpg fill
-bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/black.png fill
-bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
-bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
-bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Meadow-Lake.jpg fill 
+#keybinds for livewallpaer/wallpaper
 bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
-bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
+bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
+bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
+bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
+bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/wallpaper2.jpg fill
+bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/wallpaper1.jpg fill
+bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/wallpaper3.jpg fill
 
 # custom wallpapers
 bindsym ctrl+Shift+1 output * bg /home/mocha/Pictures/saved-pictures/latte-and-mocha.png center
@@ -405,8 +405,8 @@ bindsym $mod+ctrl+Shift+3 exec systemctl reboot
 #skid keybind ahh
 #bnw themed sway 
 #prerequisites for this one dark themed kitten terminal adawaita dark/graphite and also dark theme for firefox or any other browsers
-bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/wallpapersden.com_k-planet-pixel-art_4096x2048.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
-bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
+bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/wallpaper3.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
 
 #gruvbox theme
 #prerequisites are: kitten terminal gruvbox dark theme/gruvbox theme for firefpx or any other browsers and cava built in colorscheme
@@ -458,7 +458,7 @@ exec_always systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr
 
 
 #all windows partially transparent can be adjusted by tweaking opacity value
-for_window [class=".*"] opacity 0.82
+for_window [class=".*"] opacity 0.80
 
 #gesture effect using touchpad with 3 fingers
 bindgesture swipe:right workspace prev
@@ -492,6 +492,11 @@ bindsym $mod+Print exec grim -g "$(slurp -b '#00000044' -c '#00000000' -d)" - | 
 # keyboard backlight toggle 
 bindsym $mod+F1 exec bash ~/.config/sway/backlight_toggle.sh
 
+# live wallpaper
+bindsym $mod+F2 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/bladerunner.mp4
+
+bindsym $mod+escape exec pkill -9 mpvpaper
+
 # =============================================================================
 #  SwayFX Shader Configurations (Native eye-candy)
 # =============================================================================
@@ -507,10 +512,10 @@ shadow_color #0000007f
 # Native GPU-accelerated blur (essential for semi-transparent windows readability)
 blur enable
 blur_xray disable
-blur_passes 2
+blur_passes 3
 blur_radius 4
 
 # Layer effects for Fuzzel (applies compositor-level blur to launcher)
-layer_effects "fuzzel" blur enable
+layer_effects "fuzzel" blur enable; corner_radius 24
 
 

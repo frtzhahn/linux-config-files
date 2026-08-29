@@ -63,6 +63,8 @@ my main setup optimized for performance and aesthetics
   <img src="cachyOS-config-files/gallery/linux-rice1.gif" width="100%">
   <img src="https://github.com/user-attachments/assets/5ee6d357-328d-489f-9f37-2f01e6b6813d" width="48%">
   <img src="https://github.com/user-attachments/assets/fd915c6e-cd4b-4c7b-b7ae-509bd7a13fcb" width="48%">
+  <img src="https://github.com/user-attachments/assets/0e3b7c01-7867-44c4-af56-4aeedb929930" width="100%">
+
 </div>
 
 ---

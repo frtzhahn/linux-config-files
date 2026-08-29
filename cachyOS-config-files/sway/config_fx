@@ -369,20 +369,29 @@ bindsym ctrl+Shift+escape exec kitty -e btm
 gaps inner 10
 gaps outer 20
 
-#keybinds for livewallpaer/wallpaper
+#keybinds for wallpaper
 bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
 bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
 bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
 bindsym ctrl+alt+4 output * bg /home/mocha/Pictures/saved-pictures/Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg fill
-bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill
-bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/Spoliarium.jpg fill
-bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/Iván_el_Terrible_y_su_hijo_por_Iliá_Repin.jpg fill 
+bindsym ctrl+alt+5 output * bg /home/mocha/Pictures/saved-pictures/peakpx.jpg fill
+bindsym ctrl+alt+6 output * bg /home/mocha/Pictures/saved-pictures/modern-rome-1758.jpg fill
+bindsym ctrl+alt+7 output * bg /home/mocha/Pictures/saved-pictures/roman-empire.jpg fill 
 bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/wallpaper2.jpg fill
 bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/wallpaper1.jpg fill
 bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/wallpaper3.jpg fill
 
-# custom wallpapers
-bindsym ctrl+Shift+1 output * bg /home/mocha/Pictures/saved-pictures/latte-and-mocha.png center
+# custom live wallpapers
+bindsym ctrl+Shift+1 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper.mp4
+bindsym ctrl+Shift+2 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper2.mp4
+bindsym ctrl+Shift+3 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper3.mp4
+bindsym ctrl+Shift+4 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper4.mp4
+bindsym ctrl+Shift+5 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper7.mp4
+bindsym ctrl+Shift+6 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper13.mp4
+bindsym ctrl+Shift+7 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper11.mp4
+bindsym ctrl+Shift+8 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper5.mp4
+bindsym ctrl+Shift+9 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper9.mp4
+bindsym ctrl+Shift+0 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper10.mp4
 
 # Sticky window
 bindsym $mod+Shift+s sticky toggle
@@ -405,7 +414,7 @@ bindsym $mod+ctrl+Shift+3 exec systemctl reboot
 #skid keybind ahh
 #bnw themed sway 
 #prerequisites for this one dark themed kitten terminal adawaita dark/graphite and also dark theme for firefox or any other browsers
-bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/blackthemedwallpaper.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
+bindsym alt+Shift+ctrl+1 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/peakpx.jpg fill; kitty -e watch -n 1 sensors & kitty -e glances & kitty nvtop & kitty -e btm'
 bindsym alt+Shift+ctrl+2 exec sh -c 'swaymsg output "*" bg /home/mocha/Pictures/saved-pictures/wallpaper3.jpg fill; kitty -e cava & kitty -e htop & kitty -e unimatrix -c white -s 99 & kitty -e tty-clock -c -D -C 7' 
 
 #gruvbox theme
@@ -491,9 +500,6 @@ bindsym $mod+Print exec grim -g "$(slurp -b '#00000044' -c '#00000000' -d)" - | 
 
 # keyboard backlight toggle 
 bindsym $mod+F1 exec bash ~/.config/sway/backlight_toggle.sh
-
-# live wallpaper
-bindsym $mod+F2 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/bladerunner.mp4
 
 bindsym $mod+escape exec pkill -9 mpvpaper
 

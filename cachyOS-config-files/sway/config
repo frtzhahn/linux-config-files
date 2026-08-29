@@ -369,7 +369,7 @@ bindsym ctrl+Shift+escape exec kitty -e btm
 gaps inner 10
 gaps outer 20
 
-#keybinds for livewallpaer/wallpaper
+#keybinds for wallpaper
 bindsym ctrl+alt+1 output * bg /home/mocha/Pictures/saved-pictures/4.jpg fill 
 bindsym ctrl+alt+2 output * bg /home/mocha/Pictures/saved-pictures/Bob-Ross-Mountain-Summit.jpg fill
 bindsym ctrl+alt+3 output * bg /home/mocha/Pictures/saved-pictures/irises.jpg fill
@@ -381,8 +381,18 @@ bindsym ctrl+alt+8 output * bg /home/mocha/Pictures/saved-pictures/wallpaper2.jp
 bindsym ctrl+alt+9 output * bg /home/mocha/Pictures/saved-pictures/wallpaper1.jpg fill
 bindsym ctrl+alt+0 output * bg /home/mocha/Pictures/saved-pictures/wallpaper3.jpg fill
 
-# custom wallpapers
-bindsym ctrl+Shift+1 output * bg /home/mocha/Pictures/saved-pictures/latte-and-mocha.png center
+# custom live wallpapers
+bindsym ctrl+Shift+1 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper.mp4
+bindsym ctrl+Shift+2 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper2.mp4
+bindsym ctrl+Shift+3 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper3.mp4
+bindsym ctrl+Shift+4 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper4.mp4
+bindsym ctrl+Shift+5 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper7.mp4
+bindsym ctrl+Shift+5 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper8.mp4
+bindsym ctrl+Shift+6 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper13.mp4
+bindsym ctrl+Shift+7 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper11.mp4
+bindsym ctrl+Shift+8 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper5.mp4
+bindsym ctrl+Shift+9 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper9.mp4
+bindsym ctrl+Shift+0 exec mpvpaper -o "--hwdec=vaapi --vo=gpu --hwdec-codecs=all --no-audio --loop-file=inf" eDP-1 /home/mocha/Videos/saved-videos/optimized-wallpaper10.mp4
 
 # Sticky window
 bindsym $mod+Shift+s sticky toggle
@@ -491,3 +501,7 @@ bindsym $mod+Print exec grim -g "$(slurp -b '#00000044' -c '#00000000' -d)" - | 
 
 # keyboard backlight toggle 
 bindsym $mod+F1 exec bash ~/.config/sway/backlight_toggle.sh
+
+# kill wallpaper
+bindsym $mod+escape exec pkill -9 mpvpaper
+

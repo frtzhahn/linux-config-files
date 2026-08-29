@@ -38,6 +38,39 @@ alias figma='figma-linux --enable-features=UseOzonePlatform --ozone-platform=way
 alias lock='swaylock --screenshots --effect-blur 7x5 --effect-vignette 0.5:0.5 --fade-in 1.5' . "/home/mocha/.deno/env"
 alias focus='/home/mocha/focus/focus.sh'
 
+run_agy_silent() {
+    # 1. Start the DRP script in the background (&) and hide its text output
+    linux-discord-rich-presence -c /home/mocha/.config/linux-discord-rich-presence/antigravity-cli.sh > /dev/null 2>&1 &
+    
+    # 2. Capture the Process ID (PID) of that background script
+    local DRP_PID=$!
+
+    # 3. Run your Gemini CLI
+    command agy "$@"
+
+    # 4. Once you exit Gemini, kill the DRP process so it doesn't run forever
+    kill $DRP_PID 2>/dev/null
+}
+
+alias agy-drp='run_agy_silent'
+
+
+run_codex_silent() {
+    # 1. Start the DRP script in the background (&) and hide its text output
+    linux-discord-rich-presence -c /home/mocha/.config/linux-discord-rich-presence/codex.sh > /dev/null 2>&1 &
+    
+    # 2. Capture the Process ID (PID) of that background script
+    local DRP_PID=$!
+
+    # 3. Run your Gemini CLI
+    command codex "$@"
+
+    # 4. Once you exit Gemini, kill the DRP process so it doesn't run forever
+    kill $DRP_PID 2>/dev/null
+}
+
+alias codex-drp='run_codex_silent'
+
 # editors
 alias v='nvim'
 alias vim='nvim'
@@ -112,11 +145,18 @@ if [ $NEXT_STATE -gt 6 ]; then
     NEXT_STATE=1
 fi
 
-# Save the new state
-echo "$NEXT_STATE" > "$STATE_FILE"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="$HOME/go/bin:$PATH"
 
 # to access go installed programs
 export PATH="$HOME/go/bin:$PATH"
+
+# opencode
+export PATH=/home/mocha/.opencode/bin:$PATH
+
+# wakatime api key
+export WAKATIME_API_KEY="api_idk"
+
+# Added by Antigravity CLI installer
+export PATH="/home/mocha/.local/bin:$PATH"

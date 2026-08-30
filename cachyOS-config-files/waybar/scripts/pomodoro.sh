@@ -3,10 +3,13 @@
 # Pomodoro Timer Engine for Waybar
 # ==============================================================================
 # Configure intervals below (values in minutes):
-WORK_TIME=1               # Duration of work session (minutes)
-SHORT_BREAK=1             # Duration of short break (minutes)
-LONG_BREAK=1             # Duration of long break (minutes)
-SESSIONS_BEFORE_LONG=2    # Work sessions before a long break
+WORK_TIME=90               # Duration of work session (minutes)
+SHORT_BREAK=15             # Duration of short break (minutes)
+LONG_BREAK=30             # Duration of long break (minutes)
+SESSIONS_BEFORE_LONG=3    # Work sessions before a long break
+
+# Sound file path for alerts (headless playback via mpv)
+SOUND_FILE="${HOME}/.config/waybar/sounds/radial.mp3"
 
 # Waybar Real-Time Signal to trigger instant UI refresh
 WAYBAR_SIGNAL=8
@@ -59,6 +62,13 @@ send_notification() {
     local urgency="${3:-normal}"
     if command -v notify-send >/dev/null 2>&1; then
         notify-send -u "$urgency" -a "Pomodoro Timer" "$title" "$message"
+    fi
+}
+
+# Sound alert helper (headless background playback via mpv)
+play_alarm() {
+    if [ -n "$SOUND_FILE" ] && [ -f "$SOUND_FILE" ] && command -v mpv >/dev/null 2>&1; then
+        mpv --no-video --really-quiet "$SOUND_FILE" >/dev/null 2>&1 &
     fi
 }
 
@@ -160,6 +170,7 @@ get_status() {
                 send_notification "Break Ended" "back to grind" 
             fi
 
+            play_alarm
             IS_PAUSED=1
             END_TIME=$((current_time + REMAINING))
             save_state

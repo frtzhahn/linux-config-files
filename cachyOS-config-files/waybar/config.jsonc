@@ -6,7 +6,7 @@
   "margin-right": 0,
 
   "modules-left": ["sway/workspaces", "cpu", "memory", "load", "temperature", "disk"],
-  "modules-center": ["custom/wakatime", "clock"],
+  "modules-center": ["custom/wakatime", "clock", "custom/pomodoro"],
   "modules-right": [
     "custom/media-prev",
     "mpris",
@@ -84,6 +84,15 @@
     "format": "  {:%H:%M:%S}",
     "format-alt": "  {:%Y-%m-%d}",
     "on-click-right": "kclock"
+  },
+  "custom/pomodoro": {
+    "exec": "bash ~/.config/waybar/scripts/pomodoro.sh status",
+    "return-type": "json",
+    "interval": 1,
+    "signal": 8,
+    "on-click": "bash ~/.config/waybar/scripts/pomodoro.sh toggle",
+    "on-click-middle": "bash ~/.config/waybar/scripts/pomodoro.sh reset",
+    "on-click-right": "kitty -e nvim ~/.config/waybar/scripts/pomodoro.sh"
   },
   "custom/media-prev": {
     "format": "",

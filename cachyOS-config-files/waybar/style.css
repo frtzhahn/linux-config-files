@@ -2,172 +2,222 @@
    THEME LOADER (Uncomment the single theme you want to apply)
    ============================================================================= */
 
-@import "themes/tokyonight.css";
+@import "themes/monochrome.css";
+/* @import "themes/tokyonight.css"; */
 /* @import "themes/catppuccin.css"; */
 /* @import "themes/gruvbox.css"; */
 /* @import "themes/nord.css"; */
-/* @import "themes/monochrome.css"; */
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 11.5pt;
-    font-weight: bold;
-    color: @text_color;
-    border: none;
-    border-radius: 0;
+	font-family: "JetBrainsMono Nerd Font";
+	font-size: 11.5pt;
+	font-weight: bold;
+	color: @text_color;
+	border: none;
+	border-radius: 0;
 }
 
 /* Base container: spans full screen but invisible */
 window#waybar {
-    background: transparent;
+	background: transparent;
 }
 
 /* Individual floating containers */
 .modules-left {
-    background: @bg_bar;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-    margin: 8px 0 0 10px;
-    padding: 4px 10px;
+	background: @bg_bar;
+	border: 1px solid @border_color;
+	border-radius: 12px;
+	margin: 8px 0 0 10px;
+	padding: 4px 10px;
 }
 
 .modules-center {
-    background: @bg_bar;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-    margin: 8px 0 0 0;
-    padding: 4px 14px;
+	background: @bg_bar;
+	border: 1px solid @border_color;
+	border-radius: 12px;
+	margin: 8px 0 0 0;
+	padding: 4px 14px;
 }
 
 .modules-right {
-    background: @bg_bar;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-    margin: 8px 10px 0 0;
-    padding: 4px 10px;
+	background: @bg_bar;
+	border: 1px solid @border_color;
+	border-radius: 12px;
+	margin: 8px 10px 0 0;
+	padding: 4px 10px;
 }
 
 /* Modules styling */
-#workspaces, #cpu, #memory, #load, #temperature, #disk, #custom-wakatime, #clock, 
-#custom-media-prev, #mpris, #custom-media-next, #bluetooth, #network, #pulseaudio, #battery, #tray {
-    padding: 0 10px;
-    margin: 0;
+#workspaces,
+#cpu,
+#memory,
+#load,
+#temperature,
+#disk,
+#custom-wakatime,
+#clock,
+#custom-pomodoro,
+#custom-media-prev,
+#mpris,
+#custom-media-next,
+#bluetooth,
+#network,
+#pulseaudio,
+#battery,
+#tray {
+	padding: 0 10px;
+	margin: 0;
 }
 
 /* Workspaces styling */
 #workspaces button {
-    padding: 0 8px;
-    margin: 0 4px;
-    background: transparent;
-    color: @text_color;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
+	padding: 0 8px;
+	margin: 0 4px;
+	background: transparent;
+	color: @text_color;
+	border-radius: 6px;
+	transition: background-color 0.2s ease;
 }
 
 #workspaces button.focused {
-    color: @accent_blue;
-    background: rgba(122, 162, 247, 0.15);
-    border: 1px solid rgba(122, 162, 247, 0.3);
+	color: @accent_blue;
+	background: rgba(122, 162, 247, 0.15);
+	border: 1px solid rgba(122, 162, 247, 0.3);
 }
 
 #workspaces button.urgent {
-    color: @accent_red;
-    background: rgba(247, 118, 142, 0.15);
-    border: 1px solid rgba(247, 118, 142, 0.3);
+	color: @accent_red;
+	background: rgba(247, 118, 142, 0.15);
+	border: 1px solid rgba(247, 118, 142, 0.3);
 }
 
 #workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.1);
 }
 
 /* Accents */
-#clock, #custom-wakatime {
-    color: @accent_blue;
+#clock,
+#custom-wakatime {
+	color: @accent_blue;
+}
+
+#custom-pomodoro.work {
+	color: @pomo_work;
+}
+
+#custom-pomodoro.break {
+	color: @pomo_break;
+}
+
+#custom-pomodoro.paused {
+	color: @pomo_pause;
 }
 
 /* Media controls & Bluetooth styling */
-#custom-media-prev, #custom-media-next, #mpris, #bluetooth {
-    color: @accent_purple;
+#custom-media-prev,
+#custom-media-next,
+#mpris,
+#bluetooth {
+	color: @accent_purple;
 }
 
 /* Tighter padding to group media buttons into a single cohesive control block */
 #custom-media-prev {
-    padding-right: 0;
-    font-size: 20pt;
-    padding-left: 10px;
+	padding-right: 0;
+	font-size: 20pt;
+	padding-left: 10px;
 }
 
 #mpris {
-    padding-left: 8px;
-    padding-right: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 #custom-media-next {
-    padding-left: 0;
-    font-size: 20pt;
-    padding-right: 10px;
+	padding-left: 0;
+	font-size: 20pt;
+	padding-right: 10px;
 }
 
 /* Wifi and Bluetooth icon size increase */
-#network, #bluetooth {
-    font-size: 20pt;
+#network,
+#bluetooth {
+	font-size: 20pt;
 }
 
 #pulseaudio {
-    color: @accent_purple;
+	color: @accent_purple;
 }
 
 /* --- SYSTEM STATS WARNING STYLES (DRY) --- */
 
 /* Good State (Green by default: 0-39% / Low Temp / Low Load) */
-#cpu, #memory, #load, #temperature, #disk {
-    color: @accent_green;
+#cpu,
+#memory,
+#load,
+#temperature,
+#disk {
+	color: @accent_green;
 }
 
 /* Warning State (Yellow: 40-79% / Med Temp / Med Load) */
-#cpu.warning, #memory.warning, #load.warning, #temperature.warning, #disk.warning {
-    color: #e0af68;
-    background: transparent;
+#cpu.warning,
+#memory.warning,
+#load.warning,
+#temperature.warning,
+#disk.warning {
+	color: #e0af68;
+	background: transparent;
 }
 
 /* Critical State (Red: >=80% / High Temp / High Load) */
-#cpu.critical, #memory.critical, #load.critical, #temperature.critical, #disk.critical {
-    color: @accent_red;
-    background: transparent;
+#cpu.critical,
+#memory.critical,
+#load.critical,
+#temperature.critical,
+#disk.critical {
+	color: @accent_red;
+	background: transparent;
 }
 
 /* --- BATTERY WARNING STYLES --- */
 
 #battery {
-    color: @accent_green; /* Green for 60% - 100% discharging */
+	color: @accent_green;
+	/* Green for 60% - 100% discharging */
 }
 
 #battery.warning {
-    color: #e0af68; /* Yellow for 40% - 59% discharging */
-    background: transparent;
+	color: #e0af68;
+	/* Yellow for 40% - 59% discharging */
+	background: transparent;
 }
 
 #battery.critical {
-    color: @accent_red; /* Red for < 40% discharging */
-    background: transparent;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+	color: @accent_red;
+	/* Red for < 40% discharging */
+	background: transparent;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 /* Force standard theme color and disable blinking when charging or plugged (AC power) */
-#battery.charging, #battery.plugged,
-#battery.warning.charging, #battery.warning.plugged,
-#battery.critical.charging, #battery.critical.plugged {
-    color: @text_color;
-    animation-name: none;
+#battery.charging,
+#battery.plugged,
+#battery.warning.charging,
+#battery.warning.plugged,
+#battery.critical.charging,
+#battery.critical.plugged {
+	color: @text_color;
+	animation-name: none;
 }
 
 @keyframes blink {
-    to {
-        background-color: rgba(247, 118, 142, 0.3);
-        color: #ffffff;
-    }
+	to {
+		background-color: rgba(247, 118, 142, 0.3);
+		color: #ffffff;
+	}
 }

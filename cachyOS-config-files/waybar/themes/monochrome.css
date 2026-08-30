@@ -5,3 +5,7 @@
 @define-color accent_purple #aaaaaa;
 @define-color accent_green #cccccc;
 @define-color accent_red #ad0715;
+
+@define-color pomo_pause #81c0df;
+@define-color pomo_break #a1fd98;
+@define-color pomo_work #fab1b8;

@@ -1,7 +1,11 @@
 @define-color bg_bar rgba(40, 40, 40, 0.85);
 @define-color border_color rgba(184, 187, 38, 0.4);
 @define-color text_color #ebdbb2;
-@define-color accent_blue #83a598;
 @define-color accent_purple #d3869b;
+@define-color accent_blue #83a598;
 @define-color accent_green #b8bb26;
 @define-color accent_red #fb4934;
+
+@define-color pomo_pause #83a598;
+@define-color pomo_break #b8bb26;
+@define-color pomo_work #fb4934;

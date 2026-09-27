@@ -10,16 +10,16 @@
 -- }
 
 -- return {
---   "ellisonleao/gruvbox.nvim",
---   priority = 1000,
---   config = function()
---     require("gruvbox").setup({
--- transparent_mode = true, -- enable transparent background
---     })
+-- 	"ellisonleao/gruvbox.nvim",
+-- 	priority = 1000,
+-- 	config = function()
+-- 		require("gruvbox").setup({
+-- 			transparent_mode = true, -- enable transparent background
+-- 		})
 --
---     vim.o.background = "dark" -- or "light"
---     vim.cmd.colorscheme("gruvbox")
---   end,
+-- 		vim.o.background = "dark" -- or "light"
+-- 		vim.cmd.colorscheme("gruvbox")
+-- 	end,
 -- }
 
 -- github themes
@@ -39,14 +39,14 @@
 -- 	end,
 -- }
 
---gruvbox v2
+-- gruvbox v2
 -- return {
--- "xero/miasma.nvim",
--- lazy = false,
--- priority = 1000,
--- config = function()
--- 	vim.cmd("colorscheme miasma")
--- end,
+-- 	"xero/miasma.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- 	config = function()
+-- 		vim.cmd("colorscheme miasma")
+-- 	end,
 -- }
 
 --fleur theme
@@ -61,21 +61,21 @@
 
 -- material theme
 -- return {
---     "marko-cerovac/material.nvim",
---     lazy = false,
---     priority = 1000,
---     config = function()
---         -- Set your desired style here BEFORE loading the colorscheme.
---         -- Options: 'darker', 'lighter', 'oceanic', 'palenight', 'deep ocean'
---         vim.g.material_style = "darker"
---         -- Optional: Call setup if you want to tweak specific UI elements later
---         -- (like making the background transparent)
---         require('material').setup({
---             -- custom settings go here
---         })
+-- 	"marko-cerovac/material.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- 	config = function()
+-- 		-- Set your desired style here BEFORE loading the colorscheme.
+-- 		-- Options: 'darker', 'lighter', 'oceanic', 'palenight', 'deep ocean'
+-- 		vim.g.material_style = "deep ocean"
+-- 		-- Optional: Call setup if you want to tweak specific UI elements later
+-- 		-- (like making the background transparent)
+-- 		require("material").setup({
+-- 			-- custom settings go here
+-- 		})
 --
---         vim.cmd("colorscheme material")
---     end,
+-- 		vim.cmd("colorscheme material")
+-- 	end,
 -- }
 
 -- nightfox theme

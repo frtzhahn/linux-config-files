@@ -1,0 +1,147 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/ascii-art-7-colored.txt",
+    "type": "file",
+    "position": "left",
+    "padding": {
+      "top": 0,
+      "right": 4,
+      "left": 1
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "key": {
+      "width": 17
+    }
+  },
+  "modules": [
+    // ─── SECTION 1: SYSTEM (Lines 1-6) ───────────────────
+    {
+      "type": "custom",
+      "format": "\u001b[1;35m󰣇 SYSTEM\u001b[0m"
+    },
+    {
+      "type": "title",
+      "key": "├──  user",
+      "keyColor": "magenta",
+      "format": "{user-name}@{host-name}"
+    },
+    {
+      "type": "kernel",
+      "key": "├── 󰒋 kernel",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "host",
+      "key": "├── 󰌢 host",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "uptime",
+      "key": "├──  uptime",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "packages",
+      "key": "└── 󰏖 packages",
+      "keyColor": "magenta"
+    },
+    // ─── GUTTER 1 (Line 7) ───────────────────────────────
+    {
+      "type": "custom",
+      "format": " "
+    },
+    // ─── SECTION 2: WORKSPACE (Lines 8-13) ───────────────
+    {
+      "type": "custom",
+      "format": "\u001b[1;36m WORKSPACE\u001b[0m"
+    },
+    {
+      "type": "wm",
+      "key": "├──  wm",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "shell",
+      "key": "├──  shell",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminal",
+      "key": "├──  terminal",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminalfont",
+      "key": "├──  font",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "theme",
+      "key": "└── 󰉼 theme",
+      "keyColor": "cyan"
+    },
+    // ─── GUTTER 2 (Line 14) ──────────────────────────────
+    {
+      "type": "custom",
+      "format": " "
+    },
+    // ─── SECTION 3: HARDWARE & SPECS (Lines 15-20) ───────
+    {
+      "type": "custom",
+      "format": "\u001b[1;32m HARDWARE & SPECS\u001b[0m"
+    },
+    {
+      "type": "cpu",
+      "key": "├──  cpu",
+      "keyColor": "green",
+      "showPeCoreCount": true
+    },
+    {
+      "type": "gpu",
+      "key": "├── 󰢮 gpu",
+      "keyColor": "green"
+    },
+    {
+      "type": "memory",
+      "key": "├── 󰍛 memory",
+      "keyColor": "green",
+      "format": "{used} / {total} ({percentage})"
+    },
+    {
+      "type": "disk",
+      "key": "├──  storage",
+      "keyColor": "green",
+      "folders": "/"
+    },
+    {
+      "type": "battery",
+      "key": "└── 󱊢 battery",
+      "keyColor": "green"
+    },
+    // ─── GUTTER 3 (Line 21) ──────────────────────────────
+    {
+      "type": "custom",
+      "format": " "
+    },
+    // ─── FOOTER & PALETTE DOCK (Lines 22-25) ─────────────
+    {
+      "type": "custom",
+      "format": "             ╭──────────────────────────────╮"
+    },
+    {
+      "type": "custom",
+      "format": "             │       \u001b[38;2;249;226;175m󰮯 \u001b[38;2;243;139;168m󰊠 \u001b[38;2;250;179;135m󰊠 \u001b[38;2;166;227;161m󰊠 \u001b[38;2;116;199;236m󰊠 \u001b[38;2;137;180;250m󰊠 \u001b[38;2;203;166;247m󰊠 \u001b[38;2;180;190;254m󰊠 \u001b[0m       │"
+    },
+    {
+      "type": "custom",
+      "format": "             │       \u001b[38;2;249;226;175m● \u001b[38;2;243;139;168m● \u001b[38;2;250;179;135m● \u001b[38;2;166;227;161m● \u001b[38;2;116;199;236m● \u001b[38;2;137;180;250m● \u001b[38;2;203;166;247m● \u001b[38;2;180;190;254m●\u001b[0m        │"
+    },
+    {
+      "type": "custom",
+      "format": "             ╰──────────────────────────────╯"
+    }
+  ]
+}

@@ -524,4 +524,25 @@ blur_radius 4
 # Layer effects for Fuzzel (applies compositor-level blur to launcher)
 layer_effects "fuzzel" blur enable; corner_radius 24
 
+# ==========================================
+# Recordly Floating & Overlay Management
+# ==========================================
+for_window [app_id="Recordly"] floating enable, border none
+for_window [app_id="recordly"] floating enable, border none
+for_window [class="Recordly"] floating enable, border none
+for_window [title="Recordly"] floating enable
+for_window [title=".*Recording.*"] floating enable, sticky enable
+
+# Launch or focus Recordly
+bindsym alt+Shift+R exec /opt/recordly/Recordly.AppImage --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+
+# persistent clipboard
+bindsym $mod+c exec cliphist list | fuzzel --dmenu --with-nth 2 --prompt="Clip Logs: " | cliphist decode | wl-copy
+bindsym $mod+Alt+c exec cliphist wipe && notify-send "󱉧   Clip logs" "History wiped"
+bindsym $mod+Shift+c exec cliphist list | fuzzel --dmenu --with-nth 2 --prompt="Delete Clip: " | cliphist delete
+
+# persistent clipboard history daemons
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+
 

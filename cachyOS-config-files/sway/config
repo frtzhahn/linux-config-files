@@ -156,6 +156,39 @@ set $menu wmenu-run
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
+    # Quick Tab Navigation (Alt+1..9)
+    bindsym ctrl+1 exec /home/mocha/.config/sway/scripts/focus_tab.py 1
+    bindsym ctrl+2 exec /home/mocha/.config/sway/scripts/focus_tab.py 2
+    bindsym ctrl+3 exec /home/mocha/.config/sway/scripts/focus_tab.py 3
+    bindsym ctrl+4 exec /home/mocha/.config/sway/scripts/focus_tab.py 4
+    bindsym ctrl+5 exec /home/mocha/.config/sway/scripts/focus_tab.py 5
+    bindsym ctrl+6 exec /home/mocha/.config/sway/scripts/focus_tab.py 6
+    bindsym ctrl+7 exec /home/mocha/.config/sway/scripts/focus_tab.py 7
+    bindsym ctrl+8 exec /home/mocha/.config/sway/scripts/focus_tab.py 8
+    bindsym ctrl+9 exec /home/mocha/.config/sway/scripts/focus_tab.py 9
+
+    # Minimalist Tab Header Styling (Kitty separator style)
+    font pango:FantasqueSansM Nerd Font 12
+    titlebar_padding 10 4
+    titlebar_border_thickness 0
+    titlebar_separator disable
+
+		for_window [app_id="kitty"] title_format "  %title"
+		for_window [app_id="Alacritty"] title_format "  %title"
+		for_window [app_id="zen"] title_format "  %title"
+		for_window [app_id="brave-browser"] title_format "  %title"
+		for_window [app_id="thunar"] title_format "󱂵  %title"
+		for_window [app_id="org.kde.dolphin"] title_format "󱂵  %title"
+		for_window [app_id="obsidian"] title_format " %title"
+		for_window [app_id="vesktop"] title_format "  %title"
+		for_window [class="spotify"] title_format "󰓇  %title"
+		for_window [app_id="code"] title_format "  %title"
+		for_window [app_id="antigravity"] title_format "  %title"
+		for_window [app_id="arduino-ide"] title_format "  %title"
+		for_window [app_id="cursor"] title_format "󰳾  %title"
+		for_window [app_id="blueman-manager"] title_format " %title"
+
+
 		#decent color to stacked/tabbed windows
 		#blue themed
 		# Class                 Border  Background Text    Indicator Child_border
@@ -504,4 +537,28 @@ bindsym $mod+F1 exec bash ~/.config/sway/backlight_toggle.sh
 
 # kill wallpaper
 bindsym $mod+escape exec pkill -9 mpvpaper
+
+
+# ==========================================
+# Recordly Floating & Overlay Management
+# ==========================================
+for_window [app_id="Recordly"] floating enable, border none
+for_window [app_id="recordly"] floating enable, border none
+for_window [class="Recordly"] floating enable, border none
+for_window [title="Recordly"] floating enable
+for_window [title=".*Recording.*"] floating enable, sticky enable
+
+# Launch or focus Recordly
+bindsym alt+Shift+R exec /opt/recordly/Recordly.AppImage --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+
+# persistent clipboard
+bindsym $mod+c exec cliphist list | fuzzel --dmenu --with-nth 2 --prompt="Clip Logs: " | cliphist decode | wl-copy
+bindsym $mod+Alt+c exec cliphist wipe && notify-send "󱉧   Clip logs" "History wiped"
+bindsym $mod+Shift+c exec cliphist list | fuzzel --dmenu --with-nth 2 --prompt="Delete Clip: " | cliphist delete
+
+# persistent clipboard history daemons
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+
+
 
